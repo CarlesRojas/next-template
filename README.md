@@ -18,6 +18,21 @@ Start dev server with:
 Build with:
 `yarn build`
 
+## Folder Structure
+
+```
+next-template
+    __tests__       Contains all tests for the app
+    components      Contains reusable components
+    context         Contains all context providers (global state)
+    hooks           Contains custom hooks
+    pages           Contains every page that ios asociated with a route
+    public          Contains all public assets
+    styles          Contains all styles
+```
+
+The `__tests__` and `styles` folders should have the same subfolders as the repo (components, hooks, pages...)
+
 ## Testing
 
 All tests should be written in the `__tests__` folder.

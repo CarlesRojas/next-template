@@ -1,31 +1,48 @@
 import { createContext, useContext, useState } from "react";
 
 interface ContextInterface {
-    theme: string;
-    accentColor: string;
-    switchAccentColor: (color: string) => void;
-    switchToLightMode: () => void;
-    switchToDarkMode: () => void;
+    themeState: { dark: boolean; accentColor: string };
+    themeActions: {
+        switchAccentColor: (color: string) => void;
+        switchToLightMode: () => void;
+        switchToDarkMode: () => void;
+    };
 }
 
-const Context = createContext<ContextInterface | null>(null);
+const INITIAL_CONTEXT = {
+    themeState: {
+        dark: false,
+        accentColor: "ed0022",
+    },
+    themeActions: {
+        switchAccentColor: () => null,
+        switchToLightMode: () => null,
+        switchToDarkMode: () => null,
+    },
+};
 
-export function TodoProvider({ children }: React.PropsWithChildren) {
-    const [theme, setTheme] = useState("light");
-    const [accentColor, setAccentColor] = useState("cyan");
+const Context = createContext<ContextInterface>(INITIAL_CONTEXT);
+
+export function ThemeProvider({ children }: React.PropsWithChildren) {
+    const [dark, setDark] = useState(INITIAL_CONTEXT.themeState.dark);
+    const [accentColor, setAccentColor] = useState(INITIAL_CONTEXT.themeState.accentColor);
 
     const switchAccentColor = (color: string) => setAccentColor(color);
-    const switchToLightMode = () => setTheme("light");
-    const switchToDarkMode = () => setTheme("dark");
+    const switchToLightMode = () => setDark(false);
+    const switchToDarkMode = () => setDark(true);
 
     return (
         <Context.Provider
             value={{
-                theme,
-                accentColor,
-                switchAccentColor,
-                switchToLightMode,
-                switchToDarkMode,
+                themeState: {
+                    dark,
+                    accentColor,
+                },
+                themeActions: {
+                    switchAccentColor,
+                    switchToLightMode,
+                    switchToDarkMode,
+                },
             }}
         >
             {children}

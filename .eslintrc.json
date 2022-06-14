@@ -9,9 +9,4 @@
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": ["error"]
     }
-    // "rules": {
-    //     "strict": 1,
-    //     "noUnusedLocals": 1,
-    //     "noUnusedParameters": 1
-    // }
 }

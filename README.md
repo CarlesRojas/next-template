@@ -12,11 +12,18 @@ Install the `lts` version of node by running these:
 Install all dependencies with:
 `yarn install`
 
-Start dev with:
+Start dev server with:
 `yarn dev`
 
 Build with:
 `yarn build`
+
+## Testing
+
+All tests should be written in the `__tests__` folder.
+
+Execute all tests with:
+`yarn test`
 
 ## Linting
 

@@ -43,5 +43,6 @@ These are the available prefixes:
 `fix`: A bug fix
 `perf`: A code change that improves performance
 `refactor`: A code change that neither fixes a bug nor adds a feature
+`revert`: To revert a previously made change
 `style`: Changes that do not affect the meaning of the code
 `test`: Adding missing tests or correcting existing tests

@@ -24,6 +24,7 @@ const About: NextPage = () => {
             <p>The theme and accend color should be mantained</p>
 
             <Button label="Go to Home" onClick={() => router.push("/")} className="p-button-text mt-5" />
+            <Button label="Go to Users" onClick={() => router.push("/users")} className="p-button-text mt-5" />
         </div>
     );
 };

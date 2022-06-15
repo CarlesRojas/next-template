@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { Button } from "primereact/button";
-import { useAppSelector } from "../context/hooks";
+import { useAppSelector } from "../../context/hooks";
 
 const About: NextPage = () => {
     const router = useRouter();

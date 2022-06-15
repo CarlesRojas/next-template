@@ -1,18 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { createWrapper } from "next-redux-wrapper";
-import thunk from "redux-thunk";
-import rootReducer from "./reducers";
-
-const initalState = {};
+import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
+import { themeSlice } from "./slices/themeSlice";
 
 export const store = configureStore({
-    reducer: rootReducer,
-    middleware: [thunk],
-    preloadedState: initalState,
+    reducer: { theme: themeSlice.reducer },
 });
 
-export type AppState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export type AppState = ReturnType<typeof store.getState>;
 
-const makeStore = () => store;
-export const wrapper = createWrapper(makeStore);
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppState, unknown, Action<string>>;

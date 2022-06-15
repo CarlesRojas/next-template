@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { Button } from "primereact/button";
-import { useThemeContext } from "../context/Theme";
+import { useThemeContext } from "../../context/Theme";
 
 const About: NextPage = () => {
     const router = useRouter();

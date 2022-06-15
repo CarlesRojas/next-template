@@ -6,9 +6,10 @@ import { useAppDispatch, useAppSelector } from "../context/hooks";
 
 const Template: NextPage = () => {
     const dispatch = useAppDispatch();
-    const accentColor = useAppSelector((state) => state.theme.accentColor);
-    const dark = useAppSelector((state) => state.theme.dark);
-    const status = useAppSelector((state) => state.theme.status);
+
+    // Theme context
+    const { changeThemeAsync, changeAccentColor } = themeActions;
+    const { accentColor, dark, status } = useAppSelector((state) => state.theme);
 
     const style = {
         "--accent-color": `#${accentColor}`,
@@ -25,24 +26,21 @@ const Template: NextPage = () => {
             {dark ? (
                 <Button
                     label={status === "loading" ? "Loading..." : "Switch to Light Mode"}
-                    onClick={() => dispatch(themeActions.changeThemeAsync(false))}
+                    onClick={() => dispatch(changeThemeAsync(false))}
                     className="p-button-secondary  mb-5"
                     loading={status === "loading"}
                 />
             ) : (
                 <Button
                     label={status === "loading" ? "Loading..." : "Switch to Dark Mode"}
-                    onClick={() => dispatch(themeActions.changeThemeAsync(true))}
+                    onClick={() => dispatch(changeThemeAsync(true))}
                     className="p-button-secondary  mb-5"
                     loading={status === "loading"}
                 />
             )}
 
             <p className="mb-2">Change Accent Color:</p>
-            <ColorPicker
-                value={accentColor}
-                onChange={(e) => dispatch(themeActions.changeAccentColor(e.value as string))}
-            />
+            <ColorPicker value={accentColor} onChange={(e) => dispatch(changeAccentColor(e.value as string))} />
         </div>
     );
 };

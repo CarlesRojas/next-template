@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { getFromLocalStorage, setToLocalStorage } from "../lib/localStorage";
 
 interface ContextInterface {
     themeState: {
@@ -35,15 +36,29 @@ export function ThemeProvider({ children }: React.PropsWithChildren) {
     const [accentColor, setAccentColor] = useState(INITIAL_CONTEXT.themeState.accentColor);
     const [status, setStatus] = useState(INITIAL_CONTEXT.themeState.status);
 
-    const switchAccentColor = (color: string) => setAccentColor(color);
+    const switchAccentColor = (color: string) => {
+        setToLocalStorage("accentColor", color);
+        setAccentColor(color);
+    };
 
     const changeThemeAsync = async (dark: boolean) => {
         setStatus("loading");
         await sleep(500);
         setStatus("idle");
 
+        setToLocalStorage("dark", dark);
         setDark(dark);
     };
+
+    // Hidrate state
+    useEffect(() => {
+        console.log("Hidrate state");
+        const lsAccentColor = getFromLocalStorage("accentColor");
+        const lsDark = getFromLocalStorage("dark");
+
+        if (lsAccentColor) setAccentColor(lsAccentColor);
+        if (lsDark) setDark(lsDark);
+    }, []);
 
     return (
         <Context.Provider

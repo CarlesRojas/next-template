@@ -5,8 +5,8 @@ import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/tailwind-light/theme.css";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import "../../styles/globals.scss";
 import { persistor, store } from "../context/store";
-import "../styles/globals.scss";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     return (

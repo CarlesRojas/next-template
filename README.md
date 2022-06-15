@@ -22,13 +22,14 @@ Build with:
 
 ```
 next-template
-    __tests__       Contains all tests for the app
-    components      Contains reusable components
-    context         Contains all context providers (global state)
-    hooks           Contains custom hooks
-    pages           Contains every page that ios asociated with a route
-    public          Contains all public assets
-    styles          Contains all styles
+    __tests__           Contains all tests for the app
+    public              Contains all public assets
+    src
+        components      Contains reusable components
+        context         Contains all context providers (global state)
+        hooks           Contains custom hooks
+        pages           Contains every page that ios asociated with a route
+    styles              Contains all styles
 ```
 
 The `__tests__` and `styles` folders should have the same subfolders as the repo (components, hooks, pages...)

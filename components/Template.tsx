@@ -1,9 +1,11 @@
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 import { Button } from "primereact/button";
 import { ColorPicker } from "primereact/colorpicker";
 import { useThemeContext } from "../context/Theme";
 
 const Template: NextPage = () => {
+    const router = useRouter();
     const { themeState, themeActions } = useThemeContext();
 
     const { accentColor, dark, status } = themeState;
@@ -39,6 +41,8 @@ const Template: NextPage = () => {
 
             <p className="mb-2">Change Accent Color:</p>
             <ColorPicker value={accentColor} onChange={(e) => switchAccentColor(e.value as string)} />
+
+            <Button label="Go to About" onClick={() => router.push("/about")} className="p-button-text mt-5" />
         </div>
     );
 };

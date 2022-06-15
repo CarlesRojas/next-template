@@ -44,5 +44,3 @@ export const themeSlice = createSlice({
 
 const actions = { changeThemeAsync, changeAccentColor: themeSlice.actions.changeAccentColor };
 export default actions;
-
-export const { changeAccentColor } = themeSlice.actions;

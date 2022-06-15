@@ -1,10 +1,12 @@
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 import { Button } from "primereact/button";
 import { ColorPicker } from "primereact/colorpicker";
 import { themeActions } from "../context";
 import { useAppDispatch, useAppSelector } from "../context/hooks";
 
 const Template: NextPage = () => {
+    const router = useRouter();
     const dispatch = useAppDispatch();
 
     // Theme context
@@ -41,6 +43,8 @@ const Template: NextPage = () => {
 
             <p className="mb-2">Change Accent Color:</p>
             <ColorPicker value={accentColor} onChange={(e) => dispatch(changeAccentColor(e.value as string))} />
+
+            <Button label="Go to About" onClick={() => router.push("/about")} className="p-button-text mt-5" />
         </div>
     );
 };

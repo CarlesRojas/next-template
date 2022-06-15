@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { Button } from "primereact/button";
 import { ColorPicker } from "primereact/colorpicker";
-import { themeActions } from "../context";
 import { useAppDispatch, useAppSelector } from "../context/hooks";
+import themeActions from "../context/slices/themeSlice";
 
 const Template: NextPage = () => {
     const router = useRouter();

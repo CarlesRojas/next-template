@@ -6,8 +6,8 @@ import { useThemeContext } from "../context/Theme";
 const Template: NextPage = () => {
     const { themeState, themeActions } = useThemeContext();
 
-    const { accentColor, dark } = themeState;
-    const { switchAccentColor, switchToLightMode, switchToDarkMode } = themeActions;
+    const { accentColor, dark, status } = themeState;
+    const { switchAccentColor, changeThemeAsync } = themeActions;
 
     const style = {
         "--accent-color": `#${accentColor}`,
@@ -22,9 +22,19 @@ const Template: NextPage = () => {
             </h1>
 
             {dark ? (
-                <Button label="Switch to Light Mode" onClick={switchToLightMode} className="p-button-secondary  mb-5" />
+                <Button
+                    label={status === "loading" ? "Loading..." : "Switch to Light Mode"}
+                    onClick={() => changeThemeAsync(false)}
+                    className="p-button-secondary  mb-5"
+                    loading={status === "loading"}
+                />
             ) : (
-                <Button label="Switch to Dark Mode" onClick={switchToDarkMode} className="p-button-secondary  mb-5" />
+                <Button
+                    label={status === "loading" ? "Loading..." : "Switch to Dark Mode"}
+                    onClick={() => changeThemeAsync(true)}
+                    className="p-button-secondary  mb-5"
+                    loading={status === "loading"}
+                />
             )}
 
             <p className="mb-2">Change Accent Color:</p>

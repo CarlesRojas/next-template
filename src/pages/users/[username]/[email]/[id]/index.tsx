@@ -19,7 +19,7 @@ export async function getStaticPaths() {
         params: { id: id.toString(), username, email },
     }));
 
-    return { paths, fallback: false };
+    return { paths, fallback: "blocking" };
 }
 
 interface SearchProps {
@@ -36,8 +36,8 @@ const Users: NextPage<SearchProps> = ({ id, username, email }) => {
 
     const style = {
         "--accent-color": `#${accentColor}`,
-        backgroundColor: dark ? "black" : "white",
-        color: dark ? "white" : "black",
+        backgroundColor: dark ? "#343434" : "#f4f4f4",
+        color: dark ? "#f4f4f4" : "#343434",
     } as const;
 
     return (

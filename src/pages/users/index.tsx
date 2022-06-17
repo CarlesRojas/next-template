@@ -11,6 +11,7 @@ export async function getStaticProps() {
         props: {
             users,
         },
+        revalidate: 10,
     };
 }
 
@@ -29,8 +30,8 @@ const Users: NextPage<SearchProps> = ({ users }) => {
 
     const style = {
         "--accent-color": `#${accentColor}`,
-        backgroundColor: dark ? "black" : "white",
-        color: dark ? "white" : "black",
+        backgroundColor: dark ? "#343434" : "#f4f4f4",
+        color: dark ? "#f4f4f4" : "#343434",
     } as const;
 
     return (

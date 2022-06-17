@@ -11,13 +11,13 @@ export const getFromLocalStorage = (key: string) => {
     }
 };
 
-export const setToLocalStorage = (key: string, value: any) => {
+export const setToLocalStorage = (key: string, value: object | string | number | boolean) => {
     const prefixedKey = `${APP_NAME}_${key}`;
 
     if (typeof value === 'object') {
         localStorage.setItem(prefixedKey, JSON.stringify(value));
     } else {
-        localStorage.setItem(prefixedKey, value);
+        localStorage.setItem(prefixedKey, value.toString());
     }
 };
 

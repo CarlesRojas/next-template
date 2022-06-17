@@ -1,4 +1,4 @@
-const APP_NAME = "next-template";
+const APP_NAME = 'next-template';
 
 export const getFromLocalStorage = (key: string) => {
     const prefixedKey = `${APP_NAME}_${key}`;
@@ -14,7 +14,7 @@ export const getFromLocalStorage = (key: string) => {
 export const setToLocalStorage = (key: string, value: any) => {
     const prefixedKey = `${APP_NAME}_${key}`;
 
-    if (typeof value === "object") {
+    if (typeof value === 'object') {
         localStorage.setItem(prefixedKey, JSON.stringify(value));
     } else {
         localStorage.setItem(prefixedKey, value);

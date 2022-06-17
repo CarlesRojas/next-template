@@ -1,10 +1,10 @@
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import { Button } from "primereact/button";
-import { useThemeContext } from "../../context/Theme";
+import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import { Button } from 'primereact/button';
+import { useThemeContext } from '../../context/Theme';
 
 export async function getStaticProps() {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const res = await fetch('https://jsonplaceholder.typicode.com/users');
     const users = await res.json();
 
     return {
@@ -29,14 +29,14 @@ const Users: NextPage<SearchProps> = ({ users }) => {
     const { accentColor, dark } = themeState;
 
     const style = {
-        "--accent-color": `#${accentColor}`,
-        backgroundColor: dark ? "#343434" : "#f4f4f4",
-        color: dark ? "#f4f4f4" : "#343434",
+        '--accent-color': `#${accentColor}`,
+        backgroundColor: dark ? '#343434' : '#f4f4f4',
+        color: dark ? '#f4f4f4' : '#343434',
     } as const;
 
     return (
         <div className="h-full w-full flex flex-column justify-content-center align-items-center" style={style}>
-            <h1 className={"mb-5"} style={{ color: "var(--accent-color)" }}>
+            <h1 className={'mb-5'} style={{ color: 'var(--accent-color)' }}>
                 NextJS Template
             </h1>
             <div className="flex flex-wrap justify-content-center align-items-center">
@@ -45,8 +45,8 @@ const Users: NextPage<SearchProps> = ({ users }) => {
                         key={id as string}
                         className="w-20rem flex flex-column justify-content-center align-items-center p-5 m-2"
                         style={{
-                            boxShadow: "0px 0px 20px 5px rgba(0,0,0,0.1)",
-                            borderRadius: "1rem",
+                            boxShadow: '0px 0px 20px 5px rgba(0,0,0,0.1)',
+                            borderRadius: '1rem',
                         }}
                     >
                         <p>{id as string}</p>
@@ -60,8 +60,8 @@ const Users: NextPage<SearchProps> = ({ users }) => {
                     </div>
                 ))}
             </div>
-            <Button label="Go to Home" onClick={() => router.push("/")} className="p-button-text mt-5" />
-            <Button label="Go to About" onClick={() => router.push("/about")} className="p-button-text mt-5" />
+            <Button label="Go to Home" onClick={() => router.push('/')} className="p-button-text mt-5" />
+            <Button label="Go to About" onClick={() => router.push('/about')} className="p-button-text mt-5" />
         </div>
     );
 };

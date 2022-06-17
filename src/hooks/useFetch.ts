@@ -1,4 +1,4 @@
-import useSWR from "swr";
+import useSWR from 'swr';
 
 export default function useFetch(url: string, fetchOptions: object = {}) {
     const fetcher = (...args: [string, object]) => fetch(...args).then((res) => res.json());

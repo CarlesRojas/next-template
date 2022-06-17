@@ -17,11 +17,12 @@ const Template: NextPage = () => {
         '--accent-color': `#${accentColor}`,
         backgroundColor: dark ? '#343434' : '#f4f4f4',
         color: dark ? '#f4f4f4' : '#343434',
+        justifyContent: 'center',
     } as const;
 
     return (
-        <div className="h-full flex flex-column justify-content-center align-items-center flex-grow-1" style={style}>
-            <h1 className={'mb-5'} style={{ color: 'var(--accent-color)' }}>
+        <div className="h-full flex flex-column align-items-center flex-grow-1" style={style}>
+            <h1 className={'mb-5 mt-5'} style={{ color: 'var(--accent-color)' }}>
                 NextJS Template
             </h1>
 
@@ -44,8 +45,8 @@ const Template: NextPage = () => {
             <p className="mb-2">Change Accent Color:</p>
             <ColorPicker value={accentColor} onChange={(e) => dispatch(changeAccentColor(e.value as string))} />
 
-            <Button label="Go to About" onClick={() => router.push('/about')} className="p-button-text mt-5" />
-            <Button label="Go to Users" onClick={() => router.push('/users')} className="p-button-text mt-5" />
+            <Button label="Go to About" onClick={() => router.push('/about')} className="p-button-text mb-2 mt-2" />
+            <Button label="Go to Users" onClick={() => router.push('/users')} className="p-button-text mb-2 mt-2" />
         </div>
     );
 };

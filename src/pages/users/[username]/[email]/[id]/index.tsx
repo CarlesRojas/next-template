@@ -38,10 +38,11 @@ const Users: NextPage<SearchProps> = ({ id, username, email }) => {
         '--accent-color': `#${accentColor}`,
         backgroundColor: dark ? '#343434' : '#f4f4f4',
         color: dark ? '#f4f4f4' : '#343434',
+        justifyContent: 'center',
     } as const;
 
     return (
-        <div className="h-full flex flex-column justify-content-center align-items-center" style={style}>
+        <div className="h-full flex flex-column align-items-center" style={style}>
             <h1 className="mb-5" style={{ color: 'var(--accent-color)' }}>
                 User Details
             </h1>

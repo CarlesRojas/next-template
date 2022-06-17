@@ -36,18 +36,19 @@ const Users: NextPage<SearchProps> = ({ users }) => {
     } as const;
 
     return (
-        <div className="h-full w-full flex flex-column justify-content-center align-items-center" style={style}>
-            <h1 className={'mb-5'} style={{ color: 'var(--accent-color)' }}>
+        <div className="h-full w-full flex flex-column  align-items-center overflow-auto" style={style}>
+            <h1 className={'m-5'} style={{ color: 'var(--accent-color)' }}>
                 NextJS Template
             </h1>
-            <div className="flex flex-wrap justify-content-center align-items-center">
+            <div className="flex flex-wrap align-items-center" style={{ justifyContent: 'center' }}>
                 {users.map(({ id, username, email }) => (
                     <div
                         key={id as string}
-                        className="w-20rem flex flex-column justify-content-center align-items-center p-5 m-2"
+                        className="w-20rem flex flex-column align-items-center p-5 m-2"
                         style={{
                             boxShadow: '0px 0px 20px 5px rgba(0,0,0,0.1)',
                             borderRadius: '1rem',
+                            justifyContent: 'center',
                         }}
                     >
                         <p>{id as string}</p>
@@ -61,8 +62,8 @@ const Users: NextPage<SearchProps> = ({ users }) => {
                     </div>
                 ))}
             </div>
-            <Button label="Go to Home" onClick={() => router.push('/')} className="p-button-text mt-5" />
-            <Button label="Go to About" onClick={() => router.push('/about')} className="p-button-text mt-5" />
+            <Button label="Go to Home" onClick={() => router.push('/')} className="p-button-text mb-2 mt-2" />
+            <Button label="Go to About" onClick={() => router.push('/about')} className="p-button-text mb-2 mt-2" />
         </div>
     );
 };

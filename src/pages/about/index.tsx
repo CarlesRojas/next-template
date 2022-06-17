@@ -13,18 +13,19 @@ const About: NextPage = () => {
         '--accent-color': `#${accentColor}`,
         backgroundColor: dark ? '#343434' : '#f4f4f4',
         color: dark ? '#f4f4f4' : '#343434',
+        justifyContent: 'center',
     } as const;
 
     return (
-        <div className="h-full flex flex-column justify-content-center align-items-center flex-grow-1" style={style}>
-            <h1 className={'mb-5'} style={{ color: 'var(--accent-color)' }}>
+        <div className="h-full flex flex-column align-items-center flex-grow-1" style={style}>
+            <h1 className={'mb-5 mt-5'} style={{ color: 'var(--accent-color)' }}>
                 About Page
             </h1>
 
             <p>The theme and accend color should be mantained</p>
 
-            <Button label="Go to Home" onClick={() => router.push('/')} className="p-button-text mt-5" />
-            <Button label="Go to Users" onClick={() => router.push('/users')} className="p-button-text mt-5" />
+            <Button label="Go to Home" onClick={() => router.push('/')} className="p-button-text mb-2 mt-2" />
+            <Button label="Go to Users" onClick={() => router.push('/users')} className="p-button-text mb-2 mt-2" />
         </div>
     );
 };

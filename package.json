@@ -8,7 +8,7 @@
         "start": "next start",
         "test": "jest --watch",
         "lint": "next lint",
-        "prettier": "prettier --write .",
+        "format": "prettier --write .",
         "prepare": "husky install"
     },
     "dependencies": {

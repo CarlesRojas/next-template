@@ -53,7 +53,7 @@ Check linting with:
 Code Formatting is configured in the `.prettierrc` file.
 
 Format your code with:
-`yarn prettier`
+`yarn format`
 
 ## Committing
 

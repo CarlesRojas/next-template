@@ -1,14 +1,14 @@
-import { Action, combineReducers, configureStore, ThunkAction } from "@reduxjs/toolkit";
-import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
-import { themeSlice } from "./slices/themeSlice";
+import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import { themeSlice } from './slices/themeSlice';
 
 const rootReducer = combineReducers({
     theme: themeSlice.reducer,
 });
 
 const persistConfig = {
-    key: "root",
+    key: 'root',
     storage,
     version: 1,
 };

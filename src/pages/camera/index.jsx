@@ -27,7 +27,7 @@ const Camera = () => {
         if (result) setQRData(result?.text);
     };
 
-    function takeVideoScreenshot() {
+    const takeVideoScreenshot = () => {
         var canvas = document.getElementById('readerCanvasElement');
         var video = document.getElementById('readerVideoElement');
         canvas.width = video.videoWidth;
@@ -38,10 +38,9 @@ const Camera = () => {
             img.src = global.URL.createObjectURL(blob);
             readImageText(img);
         });
-    }
+    };
 
     const readImageText = async (imageBlob) => {
-        console.log('read image');
         try {
             const { data } = await tesseractWorker.current.recognize(imageBlob);
 
@@ -81,13 +80,12 @@ const Camera = () => {
                 videoStyle={{ objectFit: 'cover' }}
                 videoId="readerVideoElement"
             />
-            {qrData && <p>{`QR data: ${qrData}`}</p>}
+            {qrData && <p className="m-3">{`QR: ${qrData}`}</p>}
 
             <canvas id="readerCanvasElement" style={{ overflow: 'auto', display: 'none' }}></canvas>
 
-            <p>Or get close to a licence plate and click the button below</p>
             <Button label="Detect Text" onClick={takeVideoScreenshot} className="p-button-secondary mt-5" />
-            {textData && <p>{`Text data: ${textData}`}</p>}
+            {textData && <p className="m-3">{`Text: ${textData}`}</p>}
 
             <Button label="Go to Home" onClick={() => router.push('/')} className="p-button-text mb-2 mt-2" />
         </div>

@@ -33,9 +33,14 @@ const Camera = () => {
 
             <p>Try to scan a QR code</p>
 
-            <QrReader onResult={handleResult} constraints={{ facingMode: 'environment' }} className={styles.qrReader} />
+            <QrReader
+                onResult={handleResult}
+                constraints={{ facingMode: 'environment' }}
+                className={`${styles.qrReader} mt-5 mb-5`}
+                videoStyle={{ objectFit: 'cover' }}
+            />
 
-            <p>{data}</p>
+            {data && <p>{data}</p>}
 
             <Button label="Go to Home" onClick={() => router.push('/')} className="p-button-text mb-2 mt-2" />
         </div>

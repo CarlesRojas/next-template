@@ -45,7 +45,7 @@ const Camera = () => {
         try {
             const { data } = await tesseractWorker.current.recognize(imageBlob);
 
-            setTextData(data.text.replace(/[^A-Za-z0-9 ]/g, ''));
+            setTextData(data.text.replace(/[^A-Za-z0-9]/g, ''));
         } catch (error) {
             console.log(error);
         }

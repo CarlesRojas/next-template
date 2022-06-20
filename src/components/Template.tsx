@@ -48,6 +48,11 @@ const Template: NextPage = () => {
             <Button label="Go to About" onClick={() => router.push('/about')} className="p-button-text mb-2 mt-2" />
             <Button label="Go to Users" onClick={() => router.push('/users')} className="p-button-text mb-2 mt-2" />
             <Button
+                label="Go to QR Reader"
+                onClick={() => router.push('/camera')}
+                className="p-button-text mb-2 mt-2"
+            />
+            <Button
                 label="Go to Push Notifications"
                 onClick={() => router.push('/push')}
                 className="p-button-text mb-2 mt-2"

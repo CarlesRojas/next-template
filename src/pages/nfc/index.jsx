@@ -22,7 +22,7 @@ const Nfc = () => {
     const onWrite = async () => {
         try {
             const ndef = new window.NDEFReader();
-            await ndef.write(JSON.stringify({ isTrusted: true, name: 'Carles Rojas Domenech' }));
+            await ndef.write(JSON.stringify({ isTrusted: true, name: 'Carles Rojas Domenech' }), { overwrite: true });
             setConsole((prev) => [...prev, 'Write successfull']);
         } catch (error) {
             setConsole((prev) => [...prev, `Error! Write failed ${JSON.stringify(error)}`]);

@@ -52,6 +52,7 @@ const Template: NextPage = () => {
                 onClick={() => router.push('/camera')}
                 className="p-button-text mb-2 mt-2"
             />
+            <Button label="Go to NFC Reader" onClick={() => router.push('/nfc')} className="p-button-text mb-2 mt-2" />
             <Button
                 label="Go to Push Notifications"
                 onClick={() => router.push('/push')}

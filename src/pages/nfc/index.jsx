@@ -18,32 +18,17 @@ const Nfc = () => {
         justifyContent: 'center',
     };
 
-    // const onWrite = async () => {
-    //     try {
-    //         const ndef = new window.NDEFReader();
-    //         await ndef.write({
-    //             records: [{ recordType: 'text', data: 'Hellow World!' }],
-    //         });
-    //         console.log(`Value Saved!`);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
+    const onWrite = async () => {
+        try {
+            const ndef = new window.NDEFReader();
+            await ndef.write({ isTrusted: true, name: 'Carles Rojas Domenech' });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-    const onReading = (event) => {
-        console.log(event);
-        setData((prev) => prev + `${JSON.stringify(event)}`);
-        // const { message, serialNumber } = event;
-        // for (const record of message.records) {
-        //     console.log(record);
-
-        //     setData((prev) => prev + `${JSON.stringify(record)}`);
-
-        //     if (record.recordType === "text") {
-        //         const textDecoder = new TextDecoder(record.encoding);
-        //         console.log(`Message ${textDecoder.decode(record.data)}`);
-        //     }
-        // }
+    const onReading = (nfcData) => {
+        setData(JSON.stringify(nfcData));
     };
 
     const scan = useCallback(async () => {
@@ -52,16 +37,8 @@ const Nfc = () => {
                 const ndef = new window.NDEFReader();
                 await ndef.scan();
 
-                console.log('Scan started successfully.');
-
-                ndef.onreadingerror = () => {
-                    console.log('Cannot read data from the NFC tag. Try another one?');
-                };
-
-                ndef.onreading = (event) => {
-                    console.log('NDEF message read.');
-                    onReading(event);
-                };
+                ndef.onreadingerror = () => console.log('Cannot read data from the NFC tag. Try another one?');
+                ndef.onreading = (event) => onReading(event);
             } catch (error) {
                 console.log(`Error! Scan failed to start: ${error}.`);
             }
@@ -81,7 +58,7 @@ const Nfc = () => {
             </h1>
 
             <p>Get the phone close to an NFC tag</p>
-            {/* <Button label="WRITE" onClick={scan} className="mb-2 mt-2" /> */}
+            <Button label="WRITE" onClick={onWrite} className="mb-2 mt-2" />
 
             {data && <p>{data}</p>}
 

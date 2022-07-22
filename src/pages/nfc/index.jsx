@@ -7,6 +7,7 @@ const Nfc = () => {
     const router = useRouter();
 
     const [data, setData] = useState('');
+    const [console, setConsole] = useState([]);
 
     // Theme context
     const { accentColor, dark } = useAppSelector((state) => state.theme);
@@ -21,9 +22,10 @@ const Nfc = () => {
     const onWrite = async () => {
         try {
             const ndef = new window.NDEFReader();
-            await ndef.write({ isTrusted: true, name: 'Carles Rojas Domenech' });
+            await ndef.write(JSON.stringify({ isTrusted: true, name: 'Carles Rojas Domenech' }));
+            setConsole((prev) => [...prev, 'Write successfull']);
         } catch (error) {
-            console.log(error);
+            setConsole((prev) => [...prev, `Error! Write failed ${JSON.stringify(error)}`]);
         }
     };
 
@@ -37,10 +39,11 @@ const Nfc = () => {
                 const ndef = new window.NDEFReader();
                 await ndef.scan();
 
-                ndef.onreadingerror = () => console.log('Cannot read data from the NFC tag. Try another one?');
+                ndef.onreadingerror = () =>
+                    setConsole((prev) => [...prev, 'Cannot read data from the NFC tag. Try another one?']);
                 ndef.onreading = (event) => onReading(event);
             } catch (error) {
-                console.log(`Error! Scan failed to start: ${error}.`);
+                setConsole((prev) => [...prev, `Error! Scan failed to start: ${JSON.stringify(error)}.`]);
             }
         }
     }, []);

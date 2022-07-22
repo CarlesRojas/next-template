@@ -2,8 +2,7 @@
 
 self.addEventListener('push', function (event) {
     const data = JSON.parse(event.data.text());
-    console.log(data);
-    console.log(registration);
+
     event.waitUntil(
         registration.showNotification(data.title, {
             body: data.message,
@@ -14,7 +13,6 @@ self.addEventListener('push', function (event) {
 
 self.addEventListener('notificationclick', function (event) {
     event.notification.close();
-    console.log('click');
     event.waitUntil(
         clients.matchAll({ type: 'window', includeUncontrolled: true }).then(function (clientList) {
             if (clientList.length > 0) {

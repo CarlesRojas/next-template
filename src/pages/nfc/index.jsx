@@ -52,8 +52,6 @@ const Nfc = () => {
         scan();
     }, [scan]);
 
-    console.log(data);
-
     return (
         <div className="h-full flex flex-column align-items-center flex-grow-1" style={style}>
             <h1 className={'mb-5 mt-5'} style={{ color: 'var(--accent-color)' }}>

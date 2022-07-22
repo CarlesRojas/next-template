@@ -46,7 +46,6 @@ const Template: NextPage = () => {
             <ColorPicker value={accentColor} onChange={(e) => dispatch(changeAccentColor(e.value as string))} />
 
             <Button label="Go to About" onClick={() => router.push('/about')} className="p-button-text mb-2 mt-2" />
-            <Button label="Go to Users" onClick={() => router.push('/users')} className="p-button-text mb-2 mt-2" />
             <Button
                 label="Go to QR Reader"
                 onClick={() => router.push('/camera')}

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { Button } from 'primereact/button';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useAppSelector } from '../../context/hooks';
 
 const Nfc = () => {
@@ -30,41 +30,47 @@ const Nfc = () => {
     //     }
     // };
 
-    const onReading = ({ message, serialNumber }) => {
-        console.log(serialNumber);
-        for (const record of message.records) {
-            console.log(record);
+    const onReading = (event) => {
+        console.log(event);
+        setData((prev) => prev + `${JSON.stringify(event)}`);
+        // const { message, serialNumber } = event;
+        // for (const record of message.records) {
+        //     console.log(record);
 
-            setData((prev) => prev + `\n${JSON.stringify(record)}`);
+        //     setData((prev) => prev + `${JSON.stringify(record)}`);
 
-            // if (record.recordType === "text") {
-            //     const textDecoder = new TextDecoder(record.encoding);
-            //     console.log(`Message ${textDecoder.decode(record.data)}`);
-            // }
-        }
+        //     if (record.recordType === "text") {
+        //         const textDecoder = new TextDecoder(record.encoding);
+        //         console.log(`Message ${textDecoder.decode(record.data)}`);
+        //     }
+        // }
     };
 
-    const scan = async () => {
+    const scan = useCallback(async () => {
         if ('NDEFReader' in window) {
             try {
                 const ndef = new window.NDEFReader();
                 await ndef.scan();
 
-                setData((prev) => prev + '\nScan started successfully.');
+                console.log('Scan started successfully.');
 
                 ndef.onreadingerror = () => {
-                    setData((prev) => prev + '\nCannot read data from the NFC tag. Try another one?');
+                    console.log('Cannot read data from the NFC tag. Try another one?');
                 };
 
                 ndef.onreading = (event) => {
-                    setData((prev) => prev + '\nNDEF message read.');
+                    console.log('NDEF message read.');
                     onReading(event);
                 };
             } catch (error) {
-                setData((prev) => prev + `\nError! Scan failed to start: ${error}.`);
+                console.log(`Error! Scan failed to start: ${error}.`);
             }
         }
-    };
+    }, []);
+
+    useEffect(() => {
+        scan();
+    }, [scan]);
 
     console.log(data);
 
@@ -75,7 +81,7 @@ const Nfc = () => {
             </h1>
 
             <p>Get the phone close to an NFC tag</p>
-            <Button label="SCAN" onClick={scan} className="mb-2 mt-2" />
+            {/* <Button label="WRITE" onClick={scan} className="mb-2 mt-2" /> */}
 
             {data && <p>{data}</p>}
 

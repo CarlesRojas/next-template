@@ -4,12 +4,11 @@ import { Button } from 'primereact/button';
 import { useAppSelector } from '../../context/hooks';
 
 export async function getStaticProps() {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
-    const users = await res.json();
-
+    // const res = await fetch('https://jsonplaceholder.typicode.com/users');
+    // const users = await res.json();
     return {
         props: {
-            users,
+            user: [],
         },
         revalidate: 10,
     };

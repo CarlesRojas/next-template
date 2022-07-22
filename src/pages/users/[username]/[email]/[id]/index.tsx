@@ -3,24 +3,24 @@ import { useRouter } from 'next/router';
 import { Button } from 'primereact/button';
 import { useAppSelector } from '../../../../../context/hooks';
 
-export async function getStaticProps({ params }: Record<string, Record<string, string>>) {
-    const { id, username, email } = params;
+// export async function getStaticProps({ params }: Record<string, Record<string, string>>) {
+//     const { id, username, email } = params;
 
-    return {
-        props: { id, username, email },
-    };
-}
+//     return {
+//         props: { id, username, email },
+//     };
+// }
 
-export async function getStaticPaths() {
-    const res = await fetch('https://jsonplaceholder.typicode.com/users');
-    const users = await res.json();
+// export async function getStaticPaths() {
+//     const res = await fetch('https://jsonplaceholder.typicode.com/users');
+//     const users = await res.json();
 
-    const paths = users.map(({ id, username, email }: Record<string, string>) => ({
-        params: { id: id.toString(), username, email },
-    }));
+//     const paths = users.map(({ id, username, email }: Record<string, string>) => ({
+//         params: { id: id.toString(), username, email },
+//     }));
 
-    return { paths, fallback: 'blocking' };
-}
+//     return { paths, fallback: 'blocking' };
+// }
 
 interface SearchProps {
     readonly email: string;

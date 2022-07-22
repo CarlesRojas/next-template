@@ -65,6 +65,10 @@ const Nfc = () => {
 
             {data && <p>{data}</p>}
 
+            {console.map((line, i) => (
+                <p key={i}>{line}</p>
+            ))}
+
             <Button label="Go to Home" onClick={() => router.push('/')} className="p-button-text mb-2 mt-2" />
         </div>
     );
